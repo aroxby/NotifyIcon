@@ -26,13 +26,11 @@ public:
     // Retrieve installation (add/remove) status
     bool installed();
 
-    // Set and retrieve notification icon
+    // Set notification icon
     void setIcon(HICON ico);
-    HICON getIcon();
 
-    // Set and balloon notification icon
+    // Set balloon notification icon
     void setBalloonIcon(HICON ico);
-    HICON getBalloonIcon();
 
     // Set tooltip
     void setTooltip(const char *tip);
@@ -41,8 +39,6 @@ public:
     void hide();
     // Show icon in system tray
     void show();
-    // Retrieve icon visibility
-    bool shown();
 
     // Show a balloon tip
     void showBalloon(const char *title, const char *text);

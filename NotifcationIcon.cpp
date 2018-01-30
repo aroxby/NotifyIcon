@@ -77,10 +77,6 @@ void NotifcationIcon::show() {
     update();
 }
 
-bool NotifcationIcon::shown() {
-    return (nid.dwState & NIS_HIDDEN) == 0;
-}
-
 void NotifcationIcon::showBalloon(const char *title, const char *text) {
     const int TITLE_MAX = 64;
     const int TEXT_MAX = 256;
