@@ -27,3 +27,6 @@
 *.exe
 *.out
 *.app
+
+# Windows shortcut to git shell
+Git Shell.lnk
