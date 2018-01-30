@@ -29,6 +29,9 @@ public:
     // Set notification icon
     void setIcon(HICON ico);
 
+    // Set parent Window
+    void setWindow(HWND window);
+
     // Set balloon notification icon
     void setBalloonIcon(HICON ico);
 

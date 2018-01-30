@@ -48,6 +48,12 @@ void NotifcationIcon::setIcon(HICON ico) {
     update();
 }
 
+void NotifcationIcon::setWindow(HWND window) {
+    nid.hWnd = window;
+    nid.uFlags |= NIF_ICON;
+    update();
+}
+
 HICON NotifcationIcon::getIcon() {
     return nid.hIcon;
 }
