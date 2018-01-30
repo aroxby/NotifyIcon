@@ -54,16 +54,8 @@ void NotifcationIcon::setWindow(HWND window) {
     update();
 }
 
-HICON NotifcationIcon::getIcon() {
-    return nid.hIcon;
-}
-
 void NotifcationIcon::setBalloonIcon(HICON ico) {
     nid.hBalloonIcon = ico;
-}
-
-HICON NotifcationIcon::getBalloonIcon() {
-    return nid.hBalloonIcon;
 }
 
 void NotifcationIcon::setTooltip(const char *tip) {
