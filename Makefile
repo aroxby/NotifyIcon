@@ -19,7 +19,7 @@ all: $(TARGET)
 	$(CPP) $(CPPFLAGS) -c $< -o $@
 
 $(TARGET): $(OBJS)
-	$(CPP) $? $(LDFLAGS) -o $@
+	$(CPP) $^ $(LDFLAGS) -o $@
 
 tidy:
 	rm -f $(OBJS)
