@@ -56,7 +56,7 @@ int WindowMessageLoop(HWND hWnd)
         TranslateMessage(&msg);
         DispatchMessage(&msg);
     }
-    return 0;
+    return msg.wParam;
 }
 
 int main(int argc, char *argv[]) {
