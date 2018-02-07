@@ -14,7 +14,7 @@ LRESULT CALLBACK winProc(HWND hwnd, UINT type, WPARAM wparam, LPARAM lparam)
     switch(type)
     {
 
-        case WM_CLOSE:
+        case WM_DESTROY:
             PostQuitMessage(0);
             break;
 
