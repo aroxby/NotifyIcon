@@ -24,7 +24,7 @@ tidy:
 	rm -f $(OBJS)
 
 clean: tidy
-	rm $(TARGET)
+	rm -f $(TARGET)
 
 maintainer-clean: dist-clean
 	git clean -xdf
