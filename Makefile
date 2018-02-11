@@ -1,6 +1,5 @@
-# SRC_DIR=.
-# SRCS=$(shell find $(SRC_DIR) -name *.cpp)
-SRCS=main.cpp NotifcationIcon.cpp
+SRC_DIR=.
+SRCS=$(shell find $(SRC_DIR) -name '*.cpp')
 OBJS=$(subst .cpp,.o,$(SRCS))
 TARGET=NotifcationIcon.exe
 
