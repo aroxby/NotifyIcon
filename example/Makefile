@@ -1,14 +1,15 @@
-SRC_DIR=src
+SRC_DIR=.
 SRCS=$(shell find $(SRC_DIR) -name '*.cpp')
 OBJS=$(subst .cpp,.o,$(SRCS))
-TARGET_DIR=lib
-TARGET=$(TARGET_DIR)/libNotifcationIcon.a
+TARGET=NotifcationIcon.exe
 
-AR=ar rcs
 INCLUDE=../include
 CPPFLAGS=-DNTDDI_VERSION=0x06020000 -D_WIN32_WINNT=0x0602 -DWINVER=0x0602 -D_WIN32_IE=0x0A00
 CPPFLAGS+=$(foreach d, $(INCLUDE), -I$d)
 CPP=g++
+LIBDIR=../lib
+LIBS=-lNotifcationIcon -lole32
+LDFLAGS=$(foreach d, $(LIBDIR), -L$d) $(LIBS) -Wl,--subsystem,windows
 
 .PHONY: default all tidy clean maintainer-clean
 
@@ -20,14 +21,13 @@ all: $(TARGET)
 	$(CPP) $(CPPFLAGS) -c $< -o $@
 
 $(TARGET): $(OBJS)
-	mkdir -p $(TARGET_DIR)
-	$(AR) $@ $^
+	$(CPP) $^ $(LDFLAGS) -o $@
 
 tidy:
 	rm -f $(OBJS)
 
 clean: tidy
-	rm -rf $(TARGET_DIR)
+	rm -f $(TARGET)
 
 maintainer-clean: dist-clean
 	git clean -xdf
