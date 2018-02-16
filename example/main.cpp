@@ -1,5 +1,4 @@
 // Example Implementation
-// In a future iteration this could become the test driver
 
 #include <cassert>
 #include <Windows.h>
@@ -65,18 +64,33 @@ int main(int argc, char *argv[]) {
     HWND win = CreateWindow(
         "parentWin",
         "Notifcation Icon",
-        WS_OVERLAPPEDWINDOW|WS_VISIBLE,
-        CW_USEDEFAULT,
-        CW_USEDEFAULT,
-        CW_USEDEFAULT,
-        CW_USEDEFAULT,
+        WS_SYSMENU|WS_VISIBLE,
+        100,
+        100,
+        500,
+        500,
         NULL,
         NULL,
         NULL,
         NULL
     );
     assert(win);
+    HWND txt = CreateWindow(
+        "STATIC",
+        "Example Window",
+        WS_CHILD|WS_VISIBLE,
+        5,
+        5,
+        483,
+        460,
+        win,
+        NULL,
+        NULL,
+        NULL
+    );
+    assert(txt);
 
+    /*
     NotifcationIcon icon;
     icon.setIcon(ico);
     icon.setTooltip("Test Icon");
@@ -84,7 +98,7 @@ int main(int argc, char *argv[]) {
     icon.add();
     icon.show();
     icon.showBalloon("So, this is working...", "For real");
+    */
     WindowMessageLoop(win);
-    //pause();
     return 0;
 }
