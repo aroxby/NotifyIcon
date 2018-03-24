@@ -63,7 +63,7 @@ int main(int argc, char *argv[]) {
     registerClass("parentWin", ico);
     HWND win = CreateWindow(
         "parentWin",
-        "Notifcation Icon",
+        "Notification Icon",
         WS_SYSMENU|WS_VISIBLE,
         100,
         100,
