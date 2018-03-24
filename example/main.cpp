@@ -90,7 +90,6 @@ int main(int argc, char *argv[]) {
     );
     assert(txt);
 
-    /*
     NotifcationIcon icon;
     icon.setIcon(ico);
     icon.setTooltip("Test Icon");
@@ -98,7 +97,6 @@ int main(int argc, char *argv[]) {
     icon.add();
     icon.show();
     icon.showBalloon("So, this is working...", "For real");
-    */
     WindowMessageLoop(win);
     return 0;
 }
