@@ -4,11 +4,12 @@ OBJS=$(subst .cpp,.o,$(SRCS))
 TARGET_DIR=lib
 TARGET=$(TARGET_DIR)/libNotifcationIcon.a
 
-AR=ar rcs
 INCLUDE=include
 # Minimum windows requirements: Windows Vista with IE 6
 CPPFLAGS=-DNTDDI_VERSION=0x06000000 -D_WIN32_WINNT=0x0600 -DWINVER=0x0600 -D_WIN32_IE=0x0600
 CPPFLAGS+=$(foreach d, $(INCLUDE), -I$d)
+
+AR=ar
 CPP=g++
 
 .PHONY: default all tidy clean maintainer-clean
@@ -22,7 +23,7 @@ all: $(TARGET)
 
 $(TARGET): $(OBJS)
 	mkdir -p $(TARGET_DIR)
-	$(AR) $@ $^
+	$(AR) rcs $@ $^
 
 tidy:
 	rm -f $(OBJS)
