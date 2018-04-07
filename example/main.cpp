@@ -4,15 +4,10 @@
 #include <Windows.h>
 #include "NotifcationIcon.h"
 
-void pause() {
-    system("pause");
-}
-
 LRESULT CALLBACK winProc(HWND hwnd, UINT type, WPARAM wparam, LPARAM lparam)
 {
     switch(type)
     {
-
         case WM_DESTROY:
             PostQuitMessage(0);
             break;
@@ -28,10 +23,8 @@ void registerClass(const char *className, HICON ico)
     WNDCLASSEX cls;
     LPTSTR cursorImageName = MAKEINTRESOURCE(OCR_NORMAL);
     HANDLE cursorImage = LoadImage(0, cursorImageName, IMAGE_CURSOR, 0, 0, LR_SHARED|LR_DEFAULTSIZE);
-
     memset(&cls, 0, sizeof(cls));
     cls.cbSize = sizeof(cls);
-    cls.style = CS_DBLCLKS;
     cls.lpfnWndProc = winProc;
     cls.hbrBackground = (HBRUSH)(COLOR_WINDOW+1);
     cls.lpszClassName = className;
@@ -61,6 +54,7 @@ int WindowMessageLoop(HWND hWnd)
 int main(int argc, char *argv[]) {
     HICON ico = ExtractIcon(0, "Shell32.dll", 2);
     registerClass("parentWin", ico);
+    
     HWND win = CreateWindow(
         "parentWin",
         "Notification Icon",
@@ -75,6 +69,7 @@ int main(int argc, char *argv[]) {
         NULL
     );
     assert(win);
+    
     HWND txt = CreateWindow(
         "STATIC",
         "Example Window",
@@ -97,6 +92,6 @@ int main(int argc, char *argv[]) {
     icon.add();
     icon.show();
     icon.showBalloon("So, this is working...", "For real");
-    WindowMessageLoop(win);
-    return 0;
+    
+    return WindowMessageLoop(win);
 }
