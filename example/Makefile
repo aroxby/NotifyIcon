@@ -11,7 +11,7 @@ LIBDIR=../lib
 LIBS=-lNotifcationIcon -lole32
 LDFLAGS=$(foreach d, $(LIBDIR), -L$d) $(LIBS) -Wl,--subsystem,windows
 
-.PHONY: default all tidy clean maintainer-clean
+.PHONY: default all tidy clean
 
 default: all
 
@@ -28,6 +28,3 @@ tidy:
 
 clean: tidy
 	rm -f $(TARGET)
-
-maintainer-clean: dist-clean
-	git clean -xdf
