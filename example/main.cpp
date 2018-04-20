@@ -37,7 +37,7 @@ int WindowMessageLoop(HWND hWnd)
 {
     BOOL bRet;
     MSG msg;
-    while( (bRet = GetMessage(&msg, hWnd, 0, 0 )) )
+    while( (bRet = GetMessage(&msg, hWnd, 0, 0)) )
     {
         if(bRet==-1)
         {
