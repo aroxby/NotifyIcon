@@ -91,7 +91,7 @@ int main(int argc, char *argv[]) {
     icon.setWindow(win);
     icon.add();
     icon.show();
-    icon.showBalloon("So, this is working...", "For real");
+    icon.showNotification("So, this is working...", "For real");
     
     return WindowMessageLoop(win);
 }

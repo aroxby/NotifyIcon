@@ -26,14 +26,14 @@ public:
     // Retrieve installation (add/remove) status
     bool installed();
 
-    // Set notification icon
+    // Set icon
     void setIcon(HICON ico);
 
     // Set parent Window
     void setWindow(HWND window);
 
-    // Set balloon notification icon
-    void setBalloonIcon(HICON ico);
+    // Set notification icon
+    void setNotificationIcon(HICON ico);
 
     // Set tooltip
     void setTooltip(const char *tip);
@@ -43,8 +43,8 @@ public:
     // Show icon in system tray
     void show();
 
-    // Show a balloon tip
-    void showBalloon(const char *title, const char *text);
+    // Show a notification
+    void showNotification(const char *title, const char *text);
 
     // Retrieve raw Windows API data structure
     NOTIFYICONDATA *windows_nid();

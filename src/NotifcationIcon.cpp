@@ -54,7 +54,7 @@ void NotifcationIcon::setWindow(HWND window) {
     update();
 }
 
-void NotifcationIcon::setBalloonIcon(HICON ico) {
+void NotifcationIcon::setNotificationIcon(HICON ico) {
     nid.hBalloonIcon = ico;
 }
 
@@ -75,7 +75,7 @@ void NotifcationIcon::show() {
     update();
 }
 
-void NotifcationIcon::showBalloon(const char *title, const char *text) {
+void NotifcationIcon::showNotification(const char *title, const char *text) {
     const int TITLE_MAX = 64;
     const int TEXT_MAX = 256;
 
