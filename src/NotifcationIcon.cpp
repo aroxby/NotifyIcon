@@ -50,7 +50,6 @@ void NotifcationIcon::setIcon(HICON ico) {
 
 void NotifcationIcon::setWindow(HWND window) {
     nid.hWnd = window;
-    nid.uFlags |= NIF_ICON;
     update();
 }
 
@@ -84,6 +83,7 @@ void NotifcationIcon::showNotification(const char *title, const char *text) {
 
     nid.uFlags |= NIF_INFO;
     update();
+    nid.uFlags &= ~NIF_INFO;
 }
 
 NOTIFYICONDATA *NotifcationIcon::windows_nid() {
