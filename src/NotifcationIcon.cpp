@@ -42,8 +42,10 @@ void NotifcationIcon::add() {
 }
 
 void NotifcationIcon::remove() {
-    winAPI(NIM_DELETE);
-    icon_installed = false;
+    if (icon_installed) {
+        winAPI(NIM_DELETE);
+        icon_installed = false;
+    }
 }
 
 bool NotifcationIcon::installed() {
