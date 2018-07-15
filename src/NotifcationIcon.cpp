@@ -41,7 +41,7 @@ bool NotifcationIcon::installed() {
     return icon_installed;
 }
 
-void NotifcationIcon::setMessage(UNIT msg) {
+void NotifcationIcon::setMessage(UINT msg) {
     nid.uCallbackMessage = msg;
     nid.uFlags |= NIF_MESSAGE;
     update();

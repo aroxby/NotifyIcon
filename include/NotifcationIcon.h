@@ -26,7 +26,7 @@ public:
     bool installed();
 
     // Set the window message used to send events to the parent window
-    void setMessage(UNIT msg);
+    void setMessage(UINT msg);
 
     // Set icon
     void setIcon(HICON ico);
