@@ -16,8 +16,7 @@ void copyAndTermainte(char *dst, const char *src, int max) {
 NotifcationIcon::NotifcationIcon() {
     memset(&nid, 0, sizeof nid);
     nid.cbSize = sizeof nid;
-    nid.uFlags = NIF_STATE | NIF_GUID | NIF_MESSAGE | NIF_SHOWTIP;
-    nid.uCallbackMessage = callbackHash();
+    nid.uFlags = NIF_STATE | NIF_GUID | NIF_SHOWTIP;
     nid.dwState = NIS_HIDDEN;
     nid.dwStateMask = nid.dwState;
     nid.uVersion = NOTIFYICON_VERSION_4;
@@ -40,6 +39,12 @@ void NotifcationIcon::remove() {
 
 bool NotifcationIcon::installed() {
     return icon_installed;
+}
+
+void NotifcationIcon::setMessage(UNIT msg) {
+    nid.uCallbackMessage = msg;
+    nid.uFlags |= NIF_MESSAGE;
+    update();
 }
 
 void NotifcationIcon::setIcon(HICON ico) {
@@ -106,13 +111,6 @@ void NotifcationIcon::winAPI(DWORD msg) {
         std::string smsg = msg.str();
         throw NotifcationIconError(smsg);
     }
-}
-
-unsigned short NotifcationIcon::callbackHash() {
-    unsigned long addr = (unsigned long)((void*)this);
-    // Use the largest 16-bit prime as modulus
-    unsigned long hash = addr % 65521;
-    return (unsigned short)(hash);
 }
 
 bool NotifcationIcon::createGUID(GUID *guid) {

@@ -13,7 +13,6 @@ public:
     }
 };
 
-
 // Shell Notify Icon class
 class NotifcationIcon {
 public:
@@ -25,6 +24,9 @@ public:
     void remove();
     // Retrieve installation (add/remove) status
     bool installed();
+
+    // Set the window message used to send events to the parent window
+    void setMessage(UNIT msg);
 
     // Set icon
     void setIcon(HICON ico);
@@ -54,9 +56,7 @@ private:
     void update();
     // Wrapper around Shell_NotifyIcon
     void winAPI(DWORD msg);
-    // Create 16-bit callback hash
-    unsigned short callbackHash();
-    // Create guid
+    // Create guid (used to identify the icon in the system)
     static bool createGUID(GUID *pguid);
 
     //Raw Windows API data structure
