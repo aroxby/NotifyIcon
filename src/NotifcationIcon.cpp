@@ -26,6 +26,15 @@ NotifcationIcon::NotifcationIcon() {
     icon_installed = false;
 }
 
+void NotifcationIcon::setup(HWND win, HICON ico, const char *tip, UINT msg) {
+    setWindow(win);
+    setIcon(ico);
+    setTooltip(tip);
+    setMessage(msg);
+    add();
+    show();
+}
+
 void NotifcationIcon::add() {
     winAPI(NIM_ADD);
     winAPI(NIM_SETVERSION);

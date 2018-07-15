@@ -18,6 +18,9 @@ class NotifcationIcon {
 public:
     NotifcationIcon();
 
+    // Quick setup method to reduce boilerplate code
+    void setup(HWND win, HICON ico, const char *tip, UINT msg);
+
     // Install icon in windows
     void add();
     // Remove icon from windows
