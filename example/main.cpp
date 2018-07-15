@@ -93,5 +93,7 @@ int main(int argc, char *argv[]) {
     icon.show();
     icon.showNotification("So, this is working...", "For real");
     
-    return WindowMessageLoop(win);
+    int exitCode = WindowMessageLoop(win);
+    icon.remove();
+    return exitCode;
 }
