@@ -16,7 +16,7 @@ void copyAndTermainte(char *dst, const char *src, int max) {
 NotifcationIcon::NotifcationIcon() {
     memset(&nid, 0, sizeof nid);
     nid.cbSize = sizeof nid;
-    nid.uFlags = NIF_STATE | NIF_GUID | NIF_MESSAGE |NIF_SHOWTIP;
+    nid.uFlags = NIF_STATE | NIF_GUID | NIF_MESSAGE | NIF_SHOWTIP;
     nid.uCallbackMessage = callbackHash();
     nid.dwState = NIS_HIDDEN;
     nid.dwStateMask = nid.dwState;
