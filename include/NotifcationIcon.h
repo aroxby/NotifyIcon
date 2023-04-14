@@ -18,6 +18,9 @@ class NotifcationIcon {
 public:
     NotifcationIcon(const GUID &guid);
 
+    // Auto cleanup Windows data structures
+    ~NotifcationIcon();
+
     // Quick setup method to reduce boilerplate code
     void setup(HWND win, HICON ico, const char *tip, UINT msg);
 

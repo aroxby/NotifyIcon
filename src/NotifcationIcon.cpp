@@ -22,6 +22,10 @@ NotifcationIcon::NotifcationIcon(const GUID &guid) {
     icon_installed = false;
 }
 
+NotifcationIcon::~NotifcationIcon() {
+    remove();
+}
+
 void NotifcationIcon::setup(HWND win, HICON ico, const char *tip, UINT msg) {
     setWindow(win);
     setIcon(ico);
