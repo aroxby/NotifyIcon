@@ -1,8 +1,15 @@
 // Example Implementation
 
+#define OEMRESOURCE  // To get access to things like OCR_NORMAL
+
 #include <cassert>
 #include <Windows.h>
 #include "NotifcationIcon.h"
+
+// Copied from the SDK example, not used in this example
+constexpr UINT WMAPP_NOTIFYCALLBACK = WM_APP + 1;
+constexpr GUID iconGUID =
+    {0x02654e2b, 0x8884, 0x4aa0, {0x86, 0x93, 0xf9, 0x66, 0xd1, 0x40, 0xe9, 0xcd}};
 
 LRESULT CALLBACK winProc(HWND hwnd, UINT type, WPARAM wparam, LPARAM lparam)
 {
@@ -54,7 +61,7 @@ int WindowMessageLoop(HWND hWnd)
 int main(int argc, char *argv[]) {
     HICON ico = ExtractIcon(0, "Shell32.dll", 2);
     registerClass("parentWin", ico);
-    
+
     HWND win = CreateWindow(
         "parentWin",
         "Notification Icon",
@@ -69,7 +76,7 @@ int main(int argc, char *argv[]) {
         NULL
     );
     assert(win);
-    
+
     HWND txt = CreateWindow(
         "STATIC",
         "Example Window",
@@ -85,14 +92,10 @@ int main(int argc, char *argv[]) {
     );
     assert(txt);
 
-    NotifcationIcon icon;
-    icon.setIcon(ico);
-    icon.setTooltip("Test Icon");
-    icon.setWindow(win);
-    icon.add();
-    icon.show();
-    icon.showNotification("So, this is working...", "For real");
-    
+    NotifcationIcon icon(iconGUID);
+    icon.setup(win, ico, "Test Icon", WMAPP_NOTIFYCALLBACK);
+    icon.showNotification("So, this is working...", "Again");
+
     int exitCode = WindowMessageLoop(win);
     icon.remove();
     return exitCode;
