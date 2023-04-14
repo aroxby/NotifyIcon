@@ -9,7 +9,7 @@ void copyAndTermainte(char *dst, const char *src, int max) {
     dst[max - 1] = 0;
 }
 
-NotifcationIcon::NotifcationIcon() {
+NotifcationIcon::NotifcationIcon(const GUID &guid) {
     memset(&nid, 0, sizeof nid);
     nid.cbSize = sizeof nid;
     nid.uFlags = NIF_STATE | NIF_GUID | NIF_SHOWTIP;
@@ -17,7 +17,7 @@ NotifcationIcon::NotifcationIcon() {
     nid.dwStateMask = nid.dwState;
     nid.uVersion = NOTIFYICON_VERSION_4;
     nid.dwInfoFlags = NIIF_USER;
-    assert(createGUID(&nid.guidItem));
+    nid.guidItem = guid;
 
     icon_installed = false;
 }
@@ -118,9 +118,4 @@ void NotifcationIcon::winAPI(DWORD msg) {
         std::string smsg = msg.str();
         throw NotifcationIconError(smsg);
     }
-}
-
-bool NotifcationIcon::createGUID(GUID *guid) {
-    HRESULT ret = CoCreateGuid(guid);
-    return ret == 0;
 }

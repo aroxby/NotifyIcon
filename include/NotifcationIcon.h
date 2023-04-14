@@ -16,7 +16,7 @@ public:
 // Shell Notify Icon class
 class NotifcationIcon {
 public:
-    NotifcationIcon();
+    NotifcationIcon(const GUID &guid);
 
     // Quick setup method to reduce boilerplate code
     void setup(HWND win, HICON ico, const char *tip, UINT msg);
@@ -59,9 +59,6 @@ private:
     void update();
     // Wrapper around Shell_NotifyIcon
     void winAPI(DWORD msg);
-    // Create guid (used to identify the icon in the system)
-    static bool createGUID(GUID *pguid);
-
     //Raw Windows API data structure
     NOTIFYICONDATA nid;
     // Remember icon installation status
