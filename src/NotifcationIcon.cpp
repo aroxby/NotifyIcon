@@ -3,10 +3,6 @@
 #include "NotifcationIcon.h"
 using namespace std;
 
-// I don't know why these are missing
-#define NIIF_USER 0x4
-#define NIF_SHOWTIP 0x80
-
 // strncpy won't null terminate strings if strlen(src) >= max
 void copyAndTermainte(char *dst, const char *src, int max) {
     strncpy(dst, src, max);
